@@ -1,0 +1,20 @@
+body{
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background: -webkit-linear-gradient(to right, #7bed71, #12c2e9);
+    background: linear-gradient(to right, #7bed71, #12c2e9);
+}
+.outer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 100vh;
+}
+.authLayoutWrapper{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
