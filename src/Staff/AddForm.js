@@ -1,14 +1,27 @@
 import React, { useState } from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 
-export const AddForm = () => {
+export const AddForm = (onAdd) => {
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
   const [description, setDescription] = useState("");
 
-  const onSubmit=(e)=>{
-    console.log("submit alert")
+  const AddTask=(task)=>{
+    console.log(task)
   }
+  
+  const onSubmit=(e)=>{
+    e.preventDefault()
+    if(!name){
+      alert('Please add one')
+      return
+    }
+    onAdd({name , date, description})
+    setName=("")
+    setDate=("")
+    setDescription=("")
+  }
+
 
   return (
     <Container fluid>
@@ -22,7 +35,6 @@ export const AddForm = () => {
       >
         <Col md={6}>
           <Form onSubmit={onSubmit}>
-            <h3 style={{ textAlign: "center" }}>Add Staff Details</h3>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Full Name</Form.Label>
               <Form.Control placeholder="Enter Full Name" type="text" value={name} onChange={(e)=> setName(e.target.value)} />
