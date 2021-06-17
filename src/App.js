@@ -5,15 +5,18 @@ import RegisterComponent from './Auth/Register/RegisterComponent';
 import { BrowserRouter, Route, Switch} from "react-router-dom";
 import Dashboard from "./Dashboard/Dashboard";
 import Staff from "./Staff/Staff";
-import { AddForm } from "./Staff/AddForm";
+// import { AddForm } from "./Staff/AddForm";
 
+const AddTask=(task)=>{
+  console.log(task)
+}
 
 function App() {
   return (
     <BrowserRouter>
     <Switch>
       <Route path="/RegisterComponent">
-        <RegisterComponent  style={{}}/>
+        <RegisterComponent />
       </Route>
       <Route path="/Dashboard">
         <Dashboard />
@@ -21,9 +24,9 @@ function App() {
       <Route path="/Staff">
         <Staff/>
       </Route>
-      <Route path="/AddForm">
-        <AddForm/>
-      </Route>
+      {/* <Route path="/AddForm">
+        <AddForm onAdd={AddTask}/>
+      </Route> */}
       <Route path="/" >
         <LoginComponent />
       </Route>
