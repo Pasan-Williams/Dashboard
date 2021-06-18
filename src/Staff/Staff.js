@@ -8,8 +8,11 @@ import DashHeader from "../Dashboard/DashHeader";
 import PropTypes from "prop-types";
 import CustomButton from "../Custom/CustomButton/CustomButton";
 import { Tasks } from "./Tasks";
+// import DatePicker from "react-datepicker";
 
-export default function Staff({ title, onAdd, task }) {
+// import "react-datepicker/dist/react-datepicker.css";
+
+export default function Staff({ title, onAdd }) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -24,15 +27,23 @@ export default function Staff({ title, onAdd, task }) {
     const newTask = { id, name, date, description };
     setTasks([...tasks, newTask]);
     handleClose();
+    // this.setState({
+    //   id:"",
+    //   name: "",
+    //   date: "",
+    //   description: "",
+    // });
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = (e, { resetForm }) => {
     e.preventDefault();
-    onAdd({ id, name, date, description });
-    setId("");
-    setName("");
-    setDate("");
-    setDescription("");
+    resetForm({ value: "" });
+
+    // onAdd({ id, name, date, description });
+    // setId("");
+    // setName("");
+    // setDate("");
+    // setDescription("");
   };
 
   const DeleteDetails = (id) => {
@@ -102,6 +113,13 @@ export default function Staff({ title, onAdd, task }) {
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Birth Date</Form.Label>
+              {/* <DatePicker
+                placeholder="Enter Birthday"
+                selected={date}
+                onChange={(e) => setDate(e.target.value)}
+                showTimeSelect
+                dateFormat="Pp"
+              /> */}
               <Form.Control
                 placeholder="Enter Birthday"
                 type="text"
@@ -118,21 +136,23 @@ export default function Staff({ title, onAdd, task }) {
                 onChange={(e) => setDescription(e.target.value)}
               />
             </Form.Group>
-            <CustomButton
-              size="sm"
-              className="mb-3"
-              text="Close"
-              color="gray"
-              onClick={handleClose}
-            />{" "}
-            <CustomButton
-              size="sm"
-              className="mb-3"
-              text="Submit"
-              color="black"
-              value="Submit"
-              onClick={AddTask}
-            />{" "}
+            <Form.Group>
+              <CustomButton
+                size="sm"
+                className="mb-3"
+                text="Close"
+                color="gray"
+                onClick={handleClose}
+              />{" "}
+              <CustomButton
+                size="sm"
+                className="mb-3"
+                text="Submit"
+                color="black"
+                value="Submit"
+                onClick={AddTask}
+              />{" "}
+            </Form.Group>
           </Form>
         </Modal.Body>
       </Modal>
